@@ -1,0 +1,45 @@
+clc;
+close all;
+clear all;
+data1 = importdata('C:\Users\Nilanjan\Desktop\low.xlsx');
+cA = data1.data(:,1);
+cB = data1.data(:,2);
+cC = data1.data(:,3);
+cD = data1.data(:,4);
+cE = data1.data(:,5);
+cF = data1.data(:,6);
+cG = data1.data(:,7);
+cH = data1.data(:,8);
+cI = data1.data(:,8);
+c = 14;
+m = 10;
+g = 8;
+spot = 21;
+for k=1:1000
+   a = cA(k)*cE(k)*(1-cC(k;
+   b = ;
+   result(k,3) = 0;
+   fa = real(quant(a,r_min(k),A1(k),A2(k),rho(k),v_the_sp(k),r_max_min(k)));
+   fb = real(quant(b,r_min(k),A1(k),A2(k),rho(k),v_the_sp(k),r_max_min(k)));
+   result(k,5)=fa*fb;
+   if (fa*fb)<0
+   while abs(fa*fb)>0.001
+       fa = real(quant(a,r_min(k),A1(k),A2(k),rho(k),v_the_sp(k),r_max_min(k)));
+       fb = real(quant(b,r_min(k),A1(k),A2(k),rho(k),v_the_sp(k),r_max_min(k)));
+       c = ((a*fb)-(b*fa))/(fb-fa);
+       if (fa*fb)<0
+           b=c;
+       else
+           if (fa*fb)>0
+           a=c;
+           else
+               break
+           end
+       end
+       result(k,3)=result(k,3)+1;
+   end
+   result(k,1)= c;
+   result(k,2)= quant(c,r_min(k),A1(k),A2(k),rho(k),v_the_sp(k),r_max_min(k));
+   result(k,4)=1;
+   end
+end
